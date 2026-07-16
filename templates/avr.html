@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<meta charset="UTF-8">
+<title>АВР</title>
+
+<style>
+
+body {
+    font-family: Arial;
+    background:#f2f2f2;
+    padding:20px;
+}
+
+.box {
+    max-width:500px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+}
+
+button {
+    width:100%;
+    padding:15px;
+    margin:10px 0;
+    border:none;
+    border-radius:10px;
+    background:#ff7a00;
+    color:white;
+    font-size:18px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>
+Нужен автоматический запуск?
+</h2>
+
+<p>
+Генератор будет сам запускаться при отключении электричества?
+</p>
+
+
+<form method="post" action="/avr_select">
+
+<button name="avr" value="Да">
+Да, нужен АВР
+</button>
+
+
+<button name="avr" value="Нет">
+Нет
+</button>
+
+
+</form>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Подбор генератора</title>
+
+
+<style>
+
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    background: #f2f2f2;
+
+    padding: 15px;
+
+}
+
+
+
+.container {
+
+    max-width: 650px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+}
+
+
+
+button {
+
+    width:100%;
+
+    padding:14px;
+
+    margin:8px 0;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
+
+
+.category {
+
+    background:#333;
+
+    color:white;
+
+}
+
+
+
+.add {
+
+    background:#ff7a00;
+
+    color:white;
+
+}
+
+
+
+.card {
+
+
+    background:#fafafa;
+
+    border:1px solid #ddd;
+
+    border-radius:12px;
+
+    padding:15px;
+
+    margin:10px 0;
+
+
+}
+
+
+
+.card h3 {
+
+    margin:0 0 10px 0;
+
+}
+
+
+
+.power {
+
+    color:#555;
+
+    margin:5px 0;
+
+}
+
+
+
+.selected {
+
+
+    background:#e8ffe8;
+
+    border:1px solid #55aa55;
+
+}
+
+
+
+.info {
+
+
+    margin-top:20px;
+
+    padding:15px;
+
+    background:#222;
+
+    color:white;
+
+    border-radius:12px;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h2>
+Выбор потребителей
+</h2>
+
+
+<h3>
+Категория:
+</h3>
+
+
+
+{% for category in categories %}
+
+
+<form method="post" action="/category">
+
+
+<button class="category"
+
+name="category"
+
+value="{{category}}">
+
+{{category}}
+
+</button>
+
+
+</form>
+
+
+{% endfor %}
+
+
+
+<form action="/custom">
+
+
+<button class="add">
+
+➕ Добавить свой прибор
+
+</button>
+
+</form>
+
+
+
+{% if consumers %}
+
+
+<hr>
+
+
+<h3>
+Приборы:
+</h3>
+
+
+
+{% for item in consumers %}
+
+
+<div class="card">
+
+
+<h3>
+{{item['Прибор']}}
+</h3>
+
+
+
+<div class="power">
+
+Рабочая мощность:
+
+<b>
+{{item['Мощность, Вт']}} Вт
+</b>
+
+</div>
+
+
+
+<div class="power">
+
+Пусковая мощность:
+
+<b>
+{{item['Пусковые токи, Вт']}} Вт
+</b>
+
+</div>
+
+
+
+<form method="post" action="/add_consumer">
+
+
+<input type="hidden"
+
+name="id"
+
+value="{{item.id}}">
+
+
+
+<button class="add">
+
+➕ Добавить
+
+</button>
+
+
+</form>
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+{% endif %}
+
+
+
+
+<div class="info">
+
+
+<h3>
+Выбрано:
+</h3>
+
+
+{% for item in selected %}
+
+
+✅ {{item}}
+
+<br>
+
+
+{% endfor %}
+
+
+<hr>
+
+
+Расчётная мощность:
+
+<br>
+
+
+<b>
+
+{{power}} Вт
+
+</b>
+
+
+
+</div>
+
+
+
+
+<form action="/starter">
+
+
+<button>
+
+Продолжить
+
+</button>
+
+
+</form>
+
+
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<meta charset="UTF-8">
+
+<title>Подбор генератора</title>
+
+<style>
+
+body {
+    font-family: Arial;
+    background: #f5f5f5;
+    padding: 40px;
+}
+
+.box {
+    max-width: 500px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+}
+
+button {
+    width:100%;
+    padding:15px;
+    margin-top:15px;
+    background:#ff7a00;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="box">
+
+<h1>
+Подбор генератора
+</h1>
+
+
+<p>
+Есть ли у вас потребители 380В?
+</p>
+
+
+<form action="/voltage" method="post">
+
+
+<button name="voltage" value="220В">
+Нет, только однофазные (220В)
+</button>
+
+
+<button name="voltage" value="380В">
+Да, есть
+</button>
+
+
+</form>
+
+
+</div>
+
+</body>
+
+</html>

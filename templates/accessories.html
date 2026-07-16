@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Дополнительное оборудование</title>
+
+
+<style>
+
+body {
+    font-family: Arial;
+    background:#f2f2f2;
+    padding:20px;
+}
+
+
+.box {
+
+    max-width:600px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+
+}
+
+
+.item {
+
+    border:1px solid #ddd;
+    padding:15px;
+    margin:15px 0;
+    border-radius:10px;
+
+}
+
+
+button {
+
+    width:100%;
+    padding:12px;
+    background:#ff7a00;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+
+}
+
+
+.added {
+
+    background:#28a745 !important;
+
+}
+
+
+.hidden {
+
+    display:none;
+
+}
+
+
+.check {
+
+    font-size:28px;
+    animation:pop 0.3s;
+
+}
+
+
+@keyframes pop {
+
+0% {
+transform:scale(0);
+}
+
+100% {
+transform:scale(1);
+}
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="box">
+
+
+<h2>
+Дополнительно к генератору
+</h2>
+
+
+
+{% for item in items %}
+
+
+<div class="item">
+
+
+<h3>
+{{ item["Модель"] }}
+</h3>
+
+
+<p>
+Цена:
+{{ item["цена"] }} ₽
+</p>
+
+
+
+<form method="post" action="/add_accessory"
+onsubmit="added(this)">
+
+
+<input type="hidden"
+name="name"
+value="{{ item['Модель'] }}">
+
+
+
+<button type="submit">
+
+Добавить
+
+</button>
+
+
+</form>
+
+
+<div class="check hidden">
+
+✅ Добавлено
+
+</div>
+
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+<a href="/order">
+
+<button>
+Перейти к заказу
+</button>
+
+</a>
+
+
+</div>
+
+
+
+
+<script>
+
+
+function added(form){
+
+
+let button=form.querySelector("button");
+
+
+button.innerHTML="✅ Добавлено";
+
+button.classList.add("added");
+
+
+setTimeout(()=>{
+
+button.disabled=true;
+
+},100);
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

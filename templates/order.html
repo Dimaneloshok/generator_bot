@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Ваш заказ</title>
+
+
+<style>
+
+body {
+
+    font-family: Arial;
+    background:#f2f2f2;
+    padding:20px;
+
+}
+
+
+.box {
+
+    max-width:600px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+
+}
+
+
+.item {
+
+    display:flex;
+    justify-content:space-between;
+    padding:12px;
+    border-bottom:1px solid #ddd;
+
+}
+
+
+.total {
+
+    font-size:22px;
+    font-weight:bold;
+    margin-top:20px;
+
+}
+
+
+button {
+
+    width:100%;
+    padding:15px;
+    margin-top:20px;
+    background:#ff7a00;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="box">
+
+
+<h2>
+Ваш подбор генератора
+</h2>
+
+
+{% for item in cart %}
+
+<div class="item">
+
+<span>
+{{ item["name"] }}
+</span>
+
+
+<span>
+{{ item["price"] }} ₽
+</span>
+
+
+</div>
+
+
+{% endfor %}
+
+
+
+<div class="total">
+
+Итого:
+{{ total }} ₽
+
+</div>
+
+
+<form method="post" action="/finish">
+
+<button>
+Оформить заказ
+</button>
+
+</form>
+
+
+</div>
+
+
+</body>
+
+
+</html>
